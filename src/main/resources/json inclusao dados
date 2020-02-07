@@ -1,0 +1,16 @@
+#inclusao cliente
+
+{
+	"nome":"maria jose",
+	"email":"maria@yahoo.com.br",
+	"cpfOuCnpj":"31092020691",
+	"tipo":"null",
+	"logradouro":"rua sao paulo",
+	"numero":"2265",
+	"complemento":"casa",
+	"bairro":"ipiranga",
+	"cep":"35502455",
+	"telefone1":"32134951",
+	"telefone2":"988004636",
+	"cidadeId":"1"
+}
