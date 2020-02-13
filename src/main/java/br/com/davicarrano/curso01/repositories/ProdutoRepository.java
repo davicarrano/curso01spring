@@ -21,4 +21,5 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 	
 	public Page<Produto> findDistinctByNomeContainingAndCategoriasIn(String nome, List<Categoria> categorias, Pageable paginaReq);
 
+	public List<Produto> findByCategoriasIn(List<Categoria> categorias);
 }
