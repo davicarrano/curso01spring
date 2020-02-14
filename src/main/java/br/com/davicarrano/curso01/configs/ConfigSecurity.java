@@ -38,7 +38,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired 
 	private UserDetailsService userDetailsService;
 
-	private static final String[] PUBLIC_MATCHERS_SOMENTE_GET = { "/produtos/**", "/categorias/**", "/clientes/**" };
+	private static final String[] PUBLIC_MATCHERS_SOMENTE_GET = { "/produtos/**", "/clientes/**" };
 
 	private static final String[] PUBLIC_MATCHERS_SOMENTE_POST = { "/categorias/**","/clientes","/clientes/foto" };
 
