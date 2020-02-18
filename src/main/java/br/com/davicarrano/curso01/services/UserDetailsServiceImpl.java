@@ -1,5 +1,7 @@
 package br.com.davicarrano.curso01.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,12 +20,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Cliente cli = clienteRepository.findByEmail(email);
-		if (cli == null) {
+		Optional<Cliente> cli = clienteRepository.findByEmail(email);
+		if (!cli.isPresent()) {
 			throw new UsernameNotFoundException(email); 
 		}
 		
-		return new UserSS(cli.getId(),cli.getEmail(), cli.getSenha(), cli.getPerfis());
+		return new UserSS(cli.get().getId(),cli.get().getEmail(), cli.get().getSenha(), cli.get().getPerfis());
 	}
 
 }

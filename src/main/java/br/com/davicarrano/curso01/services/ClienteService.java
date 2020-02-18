@@ -2,6 +2,7 @@ package br.com.davicarrano.curso01.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -44,6 +45,11 @@ public class ClienteService {
 		return clienteOptional.orElseThrow(() -> new ObjectNotFoundException("Cliente nao localizado com id: "+id)) ;
 	}
 
+	public Cliente buscarPorEmail(String email) {
+		Optional<Cliente> clienteOptional = clienteRepository.findByEmail(email);
+		return clienteOptional.orElseThrow(()-> new ObjectNotFoundException("Cliente nao localizado com email: "+email));
+		
+	}
 	public List<Cliente> buscarTodos() {
 		List<Cliente> lista = clienteRepository.findAll();
 		if (lista.size() == 0 ) {

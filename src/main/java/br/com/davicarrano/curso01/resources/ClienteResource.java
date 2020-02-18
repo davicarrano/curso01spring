@@ -93,4 +93,11 @@ public class ClienteResource {
 		URI uri = s3service.uploadFile(multipartFile);
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@GetMapping(value = "/porEmail")
+	public ResponseEntity<ClienteDTO> buscarPorEmail(@RequestParam(name = "valor") String email){
+		Cliente cli = clienteService.buscarPorEmail(email);
+		ClienteDTO clienteDTO = ClienteDTO.toDTO(cli);
+		return ResponseEntity.ok().body(clienteDTO); 
+	}
 }
