@@ -2,6 +2,8 @@ package br.com.davicarrano.curso01.domains;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -20,9 +22,14 @@ public class ClienteNewDTO  implements Serializable{
 	@NotEmpty(message = "Nome da Categoria nao pode ser Nulo!")
 	@Length(min = 5, max = 80, message = "Tamanho do texto deve estar entre 8 e 80" )
 	private String nome;	
-	private String email;	
+	
+	@Email(message="Email inválido")
+	private String email;
+	
+	@Column(unique = true)
 	private String cpfOuCnpj;
 	private Integer tipo;
+	private String senha;
 	
 	
 	private String logradouro;
@@ -245,6 +252,22 @@ public class ClienteNewDTO  implements Serializable{
 
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
+	}
+
+
+
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 }

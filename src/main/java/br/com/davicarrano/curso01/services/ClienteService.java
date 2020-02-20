@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,9 @@ import br.com.davicarrano.curso01.services.exception.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
+
+	@Autowired 
+	private BCryptPasswordEncoder pswdEnc;
 
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -109,6 +113,7 @@ public class ClienteService {
 		cliente.setNome(clienteNewDTO.getNome());
 		cliente.setCpfOuCnpj(clienteNewDTO.getCpfOuCnpj());
 		cliente.setEmail(clienteNewDTO.getEmail());
+		cliente.setSenha(pswdEnc.encode(clienteNewDTO.getSenha()));
 		
 		if (clienteNewDTO.getTipo() != null)
 			cliente.setTipo(TipoCliente.toEnum(clienteNewDTO.getTipo()));;
