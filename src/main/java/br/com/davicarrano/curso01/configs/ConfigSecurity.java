@@ -61,7 +61,7 @@ public class ConfigSecurity extends WebSecurityConfigurerAdapter {
 				.antMatchers(PUBLIC_MATCHERS).permitAll()
 
 				/* produtos e categorias e pedidos e clientes */
-				.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_SOMENTE_GET).permitAll()
+				//.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_SOMENTE_GET).permitAll()
 				.antMatchers(HttpMethod.POST,PUBLIC_MATCHERS_SOMENTE_POST).permitAll()
 				.anyRequest().authenticated();
 		
