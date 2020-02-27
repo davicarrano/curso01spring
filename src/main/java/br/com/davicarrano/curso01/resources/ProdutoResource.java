@@ -44,4 +44,11 @@ public class ProdutoResource {
 	public ResponseEntity<List<ProdutoDTO>> produtosPorCategoria(@PathVariable(name = "id") Integer idCategoria){
 		return ResponseEntity.ok().body(produtoService.buscaProdutoPorCategoria(idCategoria));
 	}
+	
+	@GetMapping(value="/{id}")
+	public ResponseEntity<ProdutoDTO> produtoPorId(@PathVariable(name = "id") Integer idProduto){
+		Produto p = produtoService.buscar(idProduto);
+		ProdutoDTO pDTO = ProdutoDTO.toDTO(p);
+		return ResponseEntity.ok().body(pDTO);
+	}
 }

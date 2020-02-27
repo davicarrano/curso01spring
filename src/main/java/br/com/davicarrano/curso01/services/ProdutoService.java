@@ -45,4 +45,5 @@ public class ProdutoService {
 		List<ProdutoDTO> listaDTO = lista.stream().map(p -> ProdutoDTO.toDTO(p)).collect(Collectors.toList());
 		return listaDTO;
 	}
+
 }
